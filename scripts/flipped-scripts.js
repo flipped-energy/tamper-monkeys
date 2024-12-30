@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Autofill PR
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/flipped-energy/tamper-monkeys
 // @version      1.1
 // @description  Adds button to Autofill PR description with commit messages
 // @author       Flipped Energy Pty Ltd
@@ -39,10 +39,31 @@
   }
 
   // Create a button element
-  const button = document.createElement("button");
-  button.textContent = "Autofill PR Description";
-  button.style.marginLeft = "10px";
-  button.className = "btn btn-primary";
+  // const button = document.createElement("button");
+  const textContent = "Autofill PR Description";
+  const style = "marginLeft: 10px;";
+  const className = "btn btn-primary";
+
+  const newButton = `
+<div data-targets="action-bar.items" data-view-component="true" class="ActionBar-item"
+style="visibility: visible;">
+<button id="copilot-md-menu-anchor-pull_request_body" data-analytics-event="{&quot;category&quot;:&quot;comment_box&quot;,&quot;action&quot;:&quot;COPILOT&quot;,&quot;label&quot;:null}" aria-haspopup="true" aria-expanded="false" aria-labelledby="tooltip-bcb55a6b-e07b-4156-a477-130dc13bb051" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium" tabindex="0">
+<svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copilot Button-visual">
+
+    <path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
+
+</svg>
+
+</button>
+<tool-tip id="tooltip-bcb55a6b-e07b-4156-a477-130dc13bb051" for="copilot-md-menu-anchor-pull_request_body" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="position-absolute sr-only" aria-hidden="true" role="tooltip" style="--tool-tip-position-top: 428px; --tool-tip-position-left: 664.390625px;">
+${textContent}
+</tool-tip>
+</div>
+`;
+
+  //Create the button from the html string
+  const button = document.createElement("div");
+  button.setHTMLUnsafe(newButton);
 
   // Add an event listener to the button to trigger the autofill function
   button.addEventListener("click", autofillPRDescription);
@@ -52,6 +73,10 @@
     "div.ActionBar-item-container"
   );
   if (actionBarContainer) {
-    actionBarContainer.appendChild(button);
+    // actionBarContainer.appendChild(button);
+    //Insert to first element
+    actionBarContainer.insertBefore(button, actionBarContainer.firstChild);
+  } else {
+    console.error("Could not find the action bar container");
   }
 })();
