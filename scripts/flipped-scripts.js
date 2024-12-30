@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Autofill PR
 // @namespace    https://github.com/flipped-energy/tamper-monkeys
-// @version      1.4
+// @version      1.5
 // @description  Adds button to Autofill PR description with commit messages
 // @author       Flipped Energy Pty Ltd
-// @match        https://github.com/*/pull/* https://github.com/*/compare/*
+// @match        https://github.com/*/pull/*
+// @match        https://github.com/*/compare/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/flipped-energy/tamper-monkeys/refs/heads/main/scripts/flipped-scripts.js
