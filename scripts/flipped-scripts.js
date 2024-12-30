@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Autofill PR
 // @namespace    https://github.com/flipped-energy/tamper-monkeys
-// @version      1.2
+// @version      1.3
 // @description  Adds button to Autofill PR description with commit messages
 // @author       Flipped Energy Pty Ltd
 // @match        https://github.com/*/pull/*
@@ -13,6 +13,8 @@
 
 (function () {
   "use strict";
+
+  console.log("Running flipped-userscripts");
 
   // Function to autofill the PR description
   function autofillPRDescription() {
@@ -73,9 +75,9 @@ ${textContent}
     "div.ActionBar-item-container"
   );
   if (actionBarContainer) {
-    // actionBarContainer.appendChild(button);
     //Insert to first element
     actionBarContainer.insertBefore(button, actionBarContainer.firstChild);
+    console.log("Added", button);
   } else {
     console.error("Could not find the action bar container");
   }
