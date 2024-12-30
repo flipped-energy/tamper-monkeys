@@ -7,8 +7,8 @@
 // @match        https://github.com/*/pull/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @grant        none
-// @updateURL    https://raw.githubusercontent.com/flipped-energy/tamper-monkeys/main/scripts/flipped-scripts.js
-// @downloadURL  https://raw.githubusercontent.com/flipped-energy/tamper-monkeys/main/scripts/flipped-scripts.js
+// @updateURL    https://raw.githubusercontent.com/flipped-energy/tamper-monkeys/refs/heads/main/scripts/flipped-scripts.js
+// @downloadURL  https://raw.githubusercontent.com/flipped-energy/tamper-monkeys/refs/heads/main/scripts/flipped-scripts.js
 // ==/UserScript==
 
 (function () {
